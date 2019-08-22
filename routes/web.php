@@ -15,4 +15,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/upload', '');
+Route::get('/upload/image', 'UploadController@show');
+Route::post('/upload/image', 'UploadController@upload');
