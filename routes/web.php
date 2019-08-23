@@ -17,3 +17,5 @@ Route::get('/', function () {
 
 Route::get('/upload/image', 'UploadController@show');
 Route::post('/upload/image', 'UploadController@upload');
+
+Route::get('/func','FuncController@index');
