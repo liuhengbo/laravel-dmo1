@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::any('/wechat', 'WechatController@index');
+
+Route::namespace('Wechat')->prefix('wechat')->group(function (){
+    Route::any('/', 'WechatController@index');
+    Route::any('/qrcode/temporary', 'WechatToolController@getTemporaryQrCode');
+});
 
 
 

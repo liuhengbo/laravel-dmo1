@@ -19,10 +19,11 @@ class FuncController
         // 可以支持引用传值，需要将引用参数放到数组中
         call_user_func_array([$this,$type],['B','C']);
     }
-
+    // 回调函数
     public function A($type){
         dd($type);
     }
+    // 回调函数
     public function B(...$type){
         dd($type);
     }
