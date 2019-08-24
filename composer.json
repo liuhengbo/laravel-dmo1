@@ -14,6 +14,7 @@
         "intervention/image": "^2.5",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
+        "overtrue/easy-sms": "^1.1",
         "overtrue/laravel-wechat": "^5.0",
         "predis/predis": "^1.1"
     },

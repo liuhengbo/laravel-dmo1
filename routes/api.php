@@ -14,14 +14,34 @@ use \Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//
+//Route::namespace('Wechat')->prefix('wechat')->group(function (){
+//    Route::any('/', 'WechatController@index');
+//    Route::any('/qrcode/temporary', 'WechatToolController@getTemporaryQrCode');
+//});
+
+
+$api = app('Dingo\Api\Routing\Router');
+
+$api->version('v1',[
+    'namespace'=>'App\Http\Controllers\Api'
+],function ($api){
+    // 发送短信验证码
+    $api->post('verifyCode','VerifyCodeController@store')
+    ->name('api.verifyCode.store');
+    // 用户注册
+    $api->post('user','UserController@store')
+        ->name('api.user.store');
 });
 
-
-Route::namespace('Wechat')->prefix('wechat')->group(function (){
-    Route::any('/', 'WechatController@index');
-    Route::any('/qrcode/temporary', 'WechatToolController@getTemporaryQrCode');
+$api->version('v2',function ($api){
+    $api->get('version',function (){
+        return response('v2');
+    });
 });
 
 
