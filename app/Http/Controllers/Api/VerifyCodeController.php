@@ -41,7 +41,7 @@ class VerifyCodeController extends Controller
         Cache::put($key,['mobile'=>$mobile,'verifyCode'=>$verifyCode],$expired_at);
         return $this->response->array([
             'key'=>"$key",
-            'expired_at'=>"$key"
+            'expired_at'=>$expired_at->toDateTimeString()
         ])->setStatusCode(201);
     }
 }
